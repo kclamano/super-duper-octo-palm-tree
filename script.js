@@ -1,4 +1,3 @@
-// 1. DEFINE YOUR MESSAGE AND KEY
 const SECRET_KEY = 23;
 const ENCRYPTED_MESSAGE = `EXIILLR JV ILSBB, Exmmv pbzlka jlkqepxov !
 Illhfkd yxzh, F afak'q obxiiv bumbzq qexq xcqbo qexq jfprkabnpqxkafkd tb tlria pqfii cfka lro txv yxzh ql bxze lqebo. Fq'p klq qexq fq txp cxpq clo jb ql jlsb lk colj, yrq fq'p grpq qexq xq qexq qfjb F hkbt qll tbii qexq vlr afak'q abpbosb ql cbfi qexq xka abpbosba pljblkb ybqqbo. F jxv klq pxv fq xii qeb qfjb ybzxrpb F zxk'q cfka qeb ofdeq tloap ql pxv elt doxqbcri F xj ql exsb vlr fk jv ifcb klt xka elbcriiv clobsbo, clo dfsfkd jb x zexkzb, clo ilsfkd jb, clo zxofkd clo jb, xka clo xitxvp jxhfkd jb cbbi qexq F xj bklrde. Vlr'sb yolrdeq pl jrze ifdeq xka mbxzb fkql jv ifcb, bsbk fk qeb pjxiibpq txvp. F'j pl molra lc rp, lc elt cxo tb'sb zljb, xka F'j illhfkd clotxoa ql qeb jbjlofbp tb'ii pqfii jxhb qldbqebo. Fq jxv klq xitxvp yb exmmfkbpp xka ptbbqkbpp. Qebob tfii yb qfjbp tebk tb jfdeq klq criiv rkabopqxka bxze lqebo, xka tebk qexq qfjb zljbp, F elmb qexq xq qeb bka lc qeb axv tb'ii pqfii cfka lro txv yxzh ql lkb xklqebo, grpq ifhb tb xitxvp exsb. F ilsb vlr 3000, jv ilsb, xka fq'p vlr qexq F'ii xitxvp zellpb fk bsbov ifcbqfjb.`;
@@ -28,10 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     encryptedTextElement.textContent = ENCRYPTED_MESSAGE;
 
     function hideDecoderBox() {
-        decoderContainer.classList.add('hidden'); // Use the CSS class instead
+        decoderContainer.classList.add('hidden'); 
     }
 
-    // Remove the inner decryptCaesar function and use the one defined outside
 
     // 5. HINT BUTTON LOGIC
     hintButton.addEventListener('click', () => {
@@ -60,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentDecryptedText = decryptCaesar(ENCRYPTED_MESSAGE, enteredKey);
         
         if (isCorrect) {
-            // Hide decoder box first
+ 
             hideDecoderBox();
             
             // Set up final display
@@ -83,11 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
     keyInput.value = "";
 });
 
-// Keep single decryptCaesar function outside
 function decryptCaesar(ciphertext, key) {
     let plaintext = "";
     key = parseInt(key) || 0;
-    // Calculation to shift the characters back
     const decryptionShift = 26 - (key % 26);
 
     for (let i = 0; i < ciphertext.length; i++) {
@@ -103,3 +99,28 @@ function decryptCaesar(ciphertext, key) {
     }
     return plaintext;
 }
+
+function createFloatingHearts() {
+    const container = document.querySelector('#decoder-container .floating-hearts');
+    
+    setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '♥';
+        
+        heart.style.left = Math.random() * 100 + '%';
+        
+        const size = Math.random() * 20 + 25;
+        heart.style.fontSize = size + 'px';
+        
+        heart.style.animationDuration = Math.random() * 4 + 4 + 's';
+        
+        container.appendChild(heart);
+        
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+    }, 200); 
+}
+
+document.addEventListener('DOMContentLoaded', createFloatingHearts);
