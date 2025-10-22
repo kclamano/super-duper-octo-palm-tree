@@ -27,9 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     encryptedTextElement.textContent = ENCRYPTED_MESSAGE;
 
     function hideDecoderBox() {
-        decoderContainer.classList.add('hidden'); 
+        decoderContainer.classList.add('hidden'); // Use the CSS class instead
     }
-
 
     // 5. HINT BUTTON LOGIC
     hintButton.addEventListener('click', () => {
@@ -58,19 +57,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentDecryptedText = decryptCaesar(ENCRYPTED_MESSAGE, enteredKey);
         
         if (isCorrect) {
- 
             hideDecoderBox();
             
-            // Set up final display
             const finalH1 = document.getElementById('final-message-h1');
             const finalP = document.getElementById('final-message-p');
             
             finalH1.textContent = "Happy Monthsary, My Love!💙";
             finalP.textContent = currentDecryptedText;
 
-            // Show final display
             finalDisplay.classList.add('visible');
 
+            document.querySelector('.flower-redirect').classList.add('visible');
+            
             // Lock UI
             keyInput.disabled = true;
             hintButton.disabled = true;
@@ -120,7 +118,7 @@ function createFloatingHearts() {
         setTimeout(() => {
             heart.remove();
         }, 8000);
-    }, 200); 
+    }, 200);  
 }
 
 document.addEventListener('DOMContentLoaded', createFloatingHearts);
