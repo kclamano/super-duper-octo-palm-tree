@@ -1,0 +1,328 @@
+body {
+    font-family: 'Comic Sans MS', 'Segoe UI', cursive;
+    background-color: #e3f2fd;
+    color: #42a5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#decoder-container {
+    background-color: #fff;
+    border: 3px solid #90caf9;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(144, 202, 249, 0.5);
+    width: 90%;
+    max-width: 600px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 200;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+#decoder-container.hidden {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.1);
+    pointer-events: none;
+}
+
+h1 {
+    color: #1976d2;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #1e88e5;
+    border-bottom: 2px dotted #90caf9;
+    padding-bottom: 5px;
+    margin-top: 20px;
+}
+
+.instruction {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1565c0;
+}
+
+#input-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+#cipherKey {
+    background-color: #fff;
+    color: #42a5f5;
+    border: 2px solid #90caf9;
+    border-radius: 10px;
+    padding: 8px;
+    width: 60px;
+    text-align: center;
+    font-size: 1em;
+    margin-left: 10px;
+    margin-right: 10px;
+    outline: none;
+}
+
+#cipherKey:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 10px rgba(144, 202, 249, 0.3);
+}
+
+#hintButton {
+    background-color: #90caf9;
+    color: #fff;
+    border: 2px solid #90caf9;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#hintButton:hover {
+    background-color: #1976d2;
+}
+
+.hint-message {
+    color: #42a5f5;
+    text-align: center;
+    min-height: 20px;
+    margin-bottom: 20px;
+    font-style: italic;
+    transition: opacity 0.5s;
+}
+
+#encryptedText, .terminal-output {
+    background-color: #e3f2fd;
+    padding: 15px;
+    border: 2px solid #90caf9;
+    border-radius: 15px;
+    min-height: 50px;
+    font-size: 1.1em;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#decryptedText {
+    color: #1976d2;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.success-animation {
+    animation: pulse-success 0.5s ease-in-out forwards;
+    box-shadow: 0 0 15px 5px rgba(144, 202, 249, 0.7);
+}
+
+@keyframes pulse-success {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+#decoder-container::before {
+    content: '♥';
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    font-size: 2em;
+    color: #90caf9;
+}
+
+#decoder-container::after {
+    content: '♥';
+    position: absolute;
+    bottom: -15px;
+    right: 20px;
+    font-size: 2em;
+    color: #90caf9;
+}
+
+/* Final Message Display Styles */
+#final-message-display {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    text-align: center;
+    padding: 30px;
+    background-color: transparent;
+    opacity: 0;
+    transition: opacity 1s ease-in 1s;
+    width: 90%;
+    max-width: 800px;
+}
+
+#final-message-display h1 {
+    color: #1976d2;
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#final-message-display p {
+    color: #1976d2;
+    font-size: 1.3em;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(25, 118, 210, 0.3);
+}
+
+/* Add a class to control visibility */
+#final-message-display.visible {
+    opacity: 1;
+}
+
+/* Add these media queries at the end of your CSS file */
+
+/* For smaller desktop screens */
+@media screen and (max-width: 1200px) {
+    #decoder-container {
+        max-width: 500px;
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    #final-message-display {
+        max-width: 600px;
+    }
+}
+
+/* For tablets */
+@media screen and (max-width: 768px) {
+    #decoder-container {
+        max-width: 90%;
+        padding: 20px;
+        margin: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    #encryptedText, .terminal-output {
+        font-size: 1em;
+        padding: 10px;
+        max-height: 250px;
+    }
+
+    #final-message-display {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    #final-message-display h1 {
+        font-size: 2em;
+    }
+
+    #final-message-display p {
+        font-size: 1.1em;
+    }
+}
+
+/* For mobile phones */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    #decoder-container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    .instruction {
+        font-size: 0.9em;
+        margin-bottom: 20px;
+    }
+
+    #input-area {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #cipherKey {
+        width: 100px;
+        margin: 10px 0;
+    }
+
+    #hintButton {
+        width: 30px;
+        height: 30px;
+        font-size: 1em;
+    }
+
+    #encryptedText, .terminal-output {
+        font-size: 0.9em;
+        padding: 10px;
+        max-height: 200px;
+    }
+
+    #final-message-display h1 {
+        font-size: 1.5em;
+    }
+
+    #final-message-display p {
+        font-size: 1em;
+        padding: 15px;
+    }
+
+    /* Adjust heart decorations for mobile */
+    #decoder-container::before,
+    #decoder-container::after {
+        font-size: 1.5em;
+    }
+}
+
+/* For very small screens */
+@media screen and (max-width: 320px) {
+    #decoder-container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    .instruction {
+        font-size: 0.8em;
+    }
+
+    #encryptedText, .terminal-output {
+        font-size: 0.8em;
+        max-height: 150px;
+    }
+}

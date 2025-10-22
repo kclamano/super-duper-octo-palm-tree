@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Monthsary Decoder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="decoder-container">
+        <h1>Decipher me!</h1>
+        <p class="instruction">Enter the secret numeric key to reveal the message</p>
+        
+        <div id="input-area">
+            <label for="cipherKey">Key:</label>
+            <input type="number" id="cipherKey" placeholder="0" min="0" max="100">
+            <button id="hintButton">?</button>
+        </div>
+        
+        <p id="hintText" class="hint-message"></p>
+
+        <div id="message-display">
+            <h2>Encrypted Message:</h2>
+            <p id="encryptedText"></p>
+        </div>
+
+        <div id="decrypted-area">
+            <h2 id="decryptedHeader">Decrypted Message:</h2>
+            <p id="decryptedText" class="terminal-output">Awaiting Key...</p>
+        </div>
+    </div>
+
+    <div id="final-message-display">
+        <h1 id="final-message-h1"></h1>
+        <p id="final-message-p"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
