@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 body {
-    font-family: 'Comic Sans MS', 'Segoe UI', cursive;
+    font-family: 'Poppins', sans-serif;
     background-color: #e3f2fd;
     color: #42a5f5;
     display: flex;
@@ -32,6 +35,8 @@ body {
 }
 
 h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
     color: #1976d2;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -40,6 +45,8 @@ h1 {
 }
 
 h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
     color: #1e88e5;
     border-bottom: 2px dotted #90caf9;
     padding-bottom: 5px;
@@ -153,7 +160,6 @@ h2 {
     color: #90caf9;
 }
 
-/* Final Message Display Styles */
 #final-message-display {
     position: fixed;
     top: 50%;
@@ -170,6 +176,8 @@ h2 {
 }
 
 #final-message-display h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
     color: #1976d2;
     font-size: 3em;
     margin-bottom: 20px;
@@ -178,6 +186,8 @@ h2 {
 }
 
 #final-message-display p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
     color: #1976d2;
     font-size: 1.3em;
     line-height: 1.6;
@@ -189,14 +199,11 @@ h2 {
     box-shadow: 0 0 15px rgba(25, 118, 210, 0.3);
 }
 
-/* Add a class to control visibility */
 #final-message-display.visible {
     opacity: 1;
 }
 
-/* Add these media queries at the end of your CSS file */
 
-/* For smaller desktop screens */
 @media screen and (max-width: 1200px) {
     #decoder-container {
         max-width: 500px;
@@ -248,7 +255,6 @@ h2 {
     }
 }
 
-/* For mobile phones */
 @media screen and (max-width: 480px) {
     body {
         padding: 10px;
@@ -300,14 +306,12 @@ h2 {
         padding: 15px;
     }
 
-    /* Adjust heart decorations for mobile */
     #decoder-container::before,
     #decoder-container::after {
         font-size: 1.5em;
     }
 }
 
-/* For very small screens */
 @media screen and (max-width: 320px) {
     #decoder-container {
         padding: 10px;
